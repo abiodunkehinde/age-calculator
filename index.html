@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Age Calculator</title>
+  <style>
+    body { background: #16213e; height: 100vh; display: flex; justify-content: center; align-items: center; margin: 0; }
+    .age { background: #0f0f23; padding: 30px; border-radius: 16px; width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    input { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: none; background: #1a1a2e; color: white; }
+    #result { margin-top: 15px; font-weight: bold; color: #00ff9d; }
+  </style>
+</head>
+<body>
+  <div class="age">
+    <h3>Age Calculator</h3>
+    <input type="date" id="dob" onchange="calcAge()">
+    <p id="result">Enter your birthdate</p>
+  </div>
+  <script>
+    function calcAge() {
+      const dob = new Date(document.getElementById('dob').value);
+      const today = new Date();
+      let years = today.getFullYear() - dob.getFullYear();
+      const m = today.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) years--;
+      document.getElementById('result').textContent = `You are ${years} years old`;
+    }
+  </script>
+</body>
+</html>
